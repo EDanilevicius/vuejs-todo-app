@@ -2,26 +2,35 @@
   <div class="todo-list">
     <ul class="todo-list__list"></ul>
     <div class="todo-list__input">
-      <input :value="value" class="todo-list__input-textfield" type="text" @input="handleInput">
-      <button class="todo-list__input-button" type="button">Create</button>
+      <input
+        :value="value"
+        class="todo-list__input-textfield"
+        placeholder="Add To Do..."
+        type="text"
+        @input="handleInput"
+      >
+      <button class="todo-list__input-button" type="button" @click="handleClick">Create</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ToDoInput",
+  name: 'ToDoInput',
   props: {
     value: {
       type: String
     }
   },
   methods: {
-    handleInput(event) {
-      this.$emit("input", event.target.value);
+    handleInput (event) {
+      this.$emit('input', event.target.value)
+    },
+    handleClick (event) {
+      this.$emit('create', event)
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -71,4 +80,3 @@ export default {
   }
 }
 </style>
-
